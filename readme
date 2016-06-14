@@ -5,7 +5,7 @@ in a bash script
     and the main function is prefixed as described
 
 ```
-  test $SOURCE_FOR_UNIT_TESTING || main "$@"
+test $SOURCE_FOR_UNIT_TESTING || main "$@"
 ```
 
 you can use the test template to source and test functions in your script
