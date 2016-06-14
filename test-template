@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# SOURCE_FOR_UNIT_TESTING=1
+# source ./filename
+
+plan=1
+
+function pass() { plan=$(($plan - 1)); }
+function fail() { echo fail at $(caller); exit 1 ; }
+
+# three equals three
+t() {
+  test 3 -eq 3 && pass || fail
+};t
+
+test $plan -eq 0 && pass || {
+  echo "expected $plan more passing tests"
+  fail
+}
+
+echo 'success'
+exit 0
