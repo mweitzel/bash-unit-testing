@@ -6,7 +6,7 @@
 plan=2
 
 function pass() { plan=$(($plan - 1)); }
-function fail() { echo fail at $(caller); exit 1 ; }
+function fail() { echo fail at $(caller) "$@"; exit 1 ; }
 
 # three equals three, and not four
 t() {
@@ -14,10 +14,5 @@ t() {
   test 3 -eq 4 && fail || pass
 };t
 
-test $plan -eq 0 && pass || {
-  echo "expected $plan more passing tests"
-  fail
-}
-
+test $plan -eq 0 && pass || fail  "expected $plan more passing tests"
 echo 'success'
-exit 0
