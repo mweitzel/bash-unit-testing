@@ -3,14 +3,15 @@
 # SOURCE_FOR_UNIT_TESTING=1
 # source ./filename
 
-plan=1
+plan=2
 
 function pass() { plan=$(($plan - 1)); }
 function fail() { echo fail at $(caller); exit 1 ; }
 
-# three equals three
+# three equals three, and not four
 t() {
   test 3 -eq 3 && pass || fail
+  test 3 -eq 4 && fail || pass
 };t
 
 test $plan -eq 0 && pass || {
