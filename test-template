@@ -6,12 +6,14 @@
 plan=2
 
 function pass() { plan=$(($plan - 1)); }
-function fail() { echo fail at $(caller) "$@"; exit 1 ; }
+function fail() { echo fail at "$@"; exit 1 ; }
+function assert() { test $? -eq 0 && pass || fail $(caller) "$@" ; }
+function refute() { test $? -ne 0 && pass || fail $(caller) "$@" ; }
 
 # three equals three, and not four
 t() {
-  test 3 -eq 3 && pass || fail
-  test 3 -eq 4 && fail || pass
+  test 3 -eq 3 ; assert
+  test 4 -eq 3 ; refute
 };t
 
 test $plan -eq 0 && pass || fail  "expected $plan more passing tests"

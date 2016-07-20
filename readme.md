@@ -1,9 +1,8 @@
 functions/templates/etc for unit testing bash
 
-in a bash script, where everything is contained in a function, and the main function is prefixed with `test` as described:
+in your scripts, run main with
 
-```
-test $SOURCE_FOR_UNIT_TESTING || main "$@"
+    test $SOURCE_FOR_UNIT_TESTING || main "$@"
 ```
 
 you can escape the main function by setting `SOURCE_FOR_UNIT_TESTING=1` before sourcing
@@ -16,6 +15,7 @@ and to assert against a failing exit code, use
 
 `function_you_expect_to_fail && fail || pass`
 
-To test streams, wrap them in functions and assert against *their* exit codes
+To test streams, write a function and assert against *their* exit codes
+
 
 license: MIT
