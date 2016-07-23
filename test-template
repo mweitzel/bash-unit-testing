@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# in "file", prefix main call as:
+#  test SOURCE_FOR_UNIT_TESTING || main "$@"
+
 # SOURCE_FOR_UNIT_TESTING=1
-# source ./filename
+# source ./file
+
 
 plan=2
 
